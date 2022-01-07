@@ -58,7 +58,7 @@ namespace Parking.DataAccess.SQL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CarBrand = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CarNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     IdPerson = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -133,6 +133,12 @@ namespace Parking.DataAccess.SQL.Migrations
                 name: "IX_Payments_IdPerson",
                 table: "Payments",
                 column: "IdPerson");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Persons_Phone",
+                table: "Persons",
+                column: "Phone",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Places_IdPerson",

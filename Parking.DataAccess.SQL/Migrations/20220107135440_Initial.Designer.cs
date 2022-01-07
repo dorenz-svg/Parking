@@ -10,7 +10,7 @@ using Parking.DataAccess.SQL;
 namespace Parking.DataAccess.SQL.Migrations
 {
     [DbContext(typeof(ParkingContext))]
-    [Migration("20220107124728_Initial")]
+    [Migration("20220107135440_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,6 +85,9 @@ namespace Parking.DataAccess.SQL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Phone")
+                        .IsUnique();
+
                     b.ToTable("Persons");
                 });
 
@@ -137,7 +140,7 @@ namespace Parking.DataAccess.SQL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CarBrand")
+                    b.Property<string>("CarNumber")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");

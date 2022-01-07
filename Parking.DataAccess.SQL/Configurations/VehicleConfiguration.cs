@@ -13,7 +13,9 @@ namespace Parking.DataAccess.SQL.Configurations
 
             builder.Property(x => x.Id);
             builder.Property(x => x.IdPerson).IsRequired();
-            builder.Property(x => x.CarBrand).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.CarNumber).HasMaxLength(50).IsRequired();
+
+            builder.HasIndex(x => x.CarNumber).IsUnique();
         }
     }
 }
