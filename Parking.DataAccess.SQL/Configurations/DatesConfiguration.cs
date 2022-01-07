@@ -15,7 +15,7 @@ namespace Parking.DataAccess.SQL.Configurations
             builder.Property(x => x.DateArrival).IsRequired();
             builder.Property(x => x.DateLeaving);
 
-            builder.HasOne(x => x.Place).WithMany(x => x.Dates).HasForeignKey(x => x.IdPlace).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Place).WithMany(x => x.Dates).HasForeignKey(x => x.PlaceId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

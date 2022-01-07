@@ -31,12 +31,12 @@ namespace Parking.DataAccess.SQL.Migrations
                     b.Property<DateTime?>("DateLeaving")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("IdPlace")
+                    b.Property<Guid>("PlaceId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdPlace");
+                    b.HasIndex("PlaceId");
 
                     b.ToTable("Dates");
                 });
@@ -50,12 +50,12 @@ namespace Parking.DataAccess.SQL.Migrations
                     b.Property<decimal>("Cost")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("IdPerson")
+                    b.Property<Guid>("PersonId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdPerson");
+                    b.HasIndex("PersonId");
 
                     b.ToTable("Payments");
                 });
@@ -95,22 +95,17 @@ namespace Parking.DataAccess.SQL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdPerson")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("IdRates")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdVehicle")
+                    b.Property<Guid?>("PersonId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdPerson");
-
                     b.HasIndex("IdRates");
 
-                    b.HasIndex("IdVehicle");
+                    b.HasIndex("PersonId");
 
                     b.ToTable("Places");
                 });
@@ -143,7 +138,7 @@ namespace Parking.DataAccess.SQL.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid>("IdPerson")
+                    b.Property<Guid>("PersonId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -151,7 +146,7 @@ namespace Parking.DataAccess.SQL.Migrations
                     b.HasIndex("CarNumber")
                         .IsUnique();
 
-                    b.HasIndex("IdPerson");
+                    b.HasIndex("PersonId");
 
                     b.ToTable("Vehicles");
                 });
@@ -160,7 +155,7 @@ namespace Parking.DataAccess.SQL.Migrations
                 {
                     b.HasOne("Parking.DataAccess.SQL.Entities.Place", "Place")
                         .WithMany("Dates")
-                        .HasForeignKey("IdPlace")
+                        .HasForeignKey("PlaceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -171,7 +166,7 @@ namespace Parking.DataAccess.SQL.Migrations
                 {
                     b.HasOne("Parking.DataAccess.SQL.Entities.Person", "Person")
                         .WithMany("Payments")
-                        .HasForeignKey("IdPerson")
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -180,36 +175,27 @@ namespace Parking.DataAccess.SQL.Migrations
 
             modelBuilder.Entity("Parking.DataAccess.SQL.Entities.Place", b =>
                 {
-                    b.HasOne("Parking.DataAccess.SQL.Entities.Person", "Person")
-                        .WithMany("Places")
-                        .HasForeignKey("IdPerson")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Parking.DataAccess.SQL.Entities.Rates", "Rates")
                         .WithMany("Places")
                         .HasForeignKey("IdRates")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Parking.DataAccess.SQL.Entities.Vehicle", "Vehicle")
+                    b.HasOne("Parking.DataAccess.SQL.Entities.Person", "Person")
                         .WithMany("Places")
-                        .HasForeignKey("IdVehicle")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Person");
 
                     b.Navigation("Rates");
-
-                    b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("Parking.DataAccess.SQL.Entities.Vehicle", b =>
                 {
                     b.HasOne("Parking.DataAccess.SQL.Entities.Person", "Person")
                         .WithMany("Vehicles")
-                        .HasForeignKey("IdPerson")
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -231,11 +217,6 @@ namespace Parking.DataAccess.SQL.Migrations
                 });
 
             modelBuilder.Entity("Parking.DataAccess.SQL.Entities.Rates", b =>
-                {
-                    b.Navigation("Places");
-                });
-
-            modelBuilder.Entity("Parking.DataAccess.SQL.Entities.Vehicle", b =>
                 {
                     b.Navigation("Places");
                 });

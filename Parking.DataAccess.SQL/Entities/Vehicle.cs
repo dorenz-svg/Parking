@@ -9,10 +9,9 @@ namespace Parking.DataAccess.SQL.Entities
 
         public string CarNumber { get; set; }
 
-        public Guid IdPerson { get; set; }
+        public Guid PersonId { get; set; }
 
         public Person Person { get; set; }
 
-        public IEnumerable<Place> Places { get; set; }
     }
 }

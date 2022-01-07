@@ -8,7 +8,7 @@ namespace Parking.DataAccess.SQL.Entities
 
         public decimal Cost { get; set; }
 
-        public Guid IdPerson { get; set; }
+        public Guid PersonId { get; set; }
 
         public Person Person { get; set; }
     }

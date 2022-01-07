@@ -17,7 +17,7 @@ namespace Parking.DataAccess.SQL.Configurations
             builder.Property(x => x.Phone).HasMaxLength(11).IsRequired();
 
             builder.HasIndex(x => x.Phone).IsUnique();
-            builder.HasMany(x => x.Vehicles).WithOne(x => x.Person).HasForeignKey(x => x.IdPerson).OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(x => x.Vehicles).WithOne(x => x.Person).HasForeignKey(x => x.PersonId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

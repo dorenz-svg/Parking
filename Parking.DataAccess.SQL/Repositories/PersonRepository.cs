@@ -2,6 +2,8 @@
 using Parking.Abstractions.Models;
 using Parking.Abstractions.Repositories;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Parking.DataAccess.SQL.Repositories
@@ -17,7 +19,7 @@ namespace Parking.DataAccess.SQL.Repositories
 
         public async Task AddVehicleToPerson(string carNumber, string personId)
         {
-            _context.Vehicles.Add(new Entities.Vehicle { CarNumber = carNumber, IdPerson = new Guid(personId) });
+            _context.Vehicles.Add(new Entities.Vehicle { CarNumber = carNumber, PersonId = new Guid(personId) });
 
             await _context.SaveChangesAsync();
         }
@@ -46,6 +48,11 @@ namespace Parking.DataAccess.SQL.Repositories
         {
             var person = await _context.People.FirstOrDefaultAsync(x => x.Phone == phone);
             return person?.Id.ToString();
+        }
+
+        public async  Task<IEnumerable<string>> GetPlaces(string personId)
+        {
+            return await _context.Places.Where(x => x.PersonId == new Guid(personId)).Select(x => x.Id.ToString()).ToListAsync();
         }
     }
 }

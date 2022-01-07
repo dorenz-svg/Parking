@@ -11,6 +11,7 @@ namespace Parking.DataAccess.SQL
         public DbSet<Place> Places { get; set; }
         public DbSet<Rates> Rates { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

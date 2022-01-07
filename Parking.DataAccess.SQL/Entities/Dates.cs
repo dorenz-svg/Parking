@@ -10,7 +10,7 @@ namespace Parking.DataAccess.SQL.Entities
 
         public DateTime? DateLeaving { get; set; }
 
-        public Guid IdPlace { get; set; }
+        public Guid PlaceId { get; set; }
 
         public Place Place { get; set; }
     }

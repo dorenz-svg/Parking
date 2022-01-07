@@ -14,7 +14,7 @@ namespace Parking.DataAccess.SQL.Configurations
             builder.Property(x => x.Id);
             builder.Property(x => x.Cost).IsRequired();
 
-            builder.HasOne(x => x.Person).WithMany(x => x.Payments).HasForeignKey(x => x.IdPerson).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Person).WithMany(x => x.Payments).HasForeignKey(x => x.PersonId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

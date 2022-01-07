@@ -40,14 +40,14 @@ namespace Parking.DataAccess.SQL.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IdPerson = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Payments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Payments_Persons_IdPerson",
-                        column: x => x.IdPerson,
+                        name: "FK_Payments_Persons_PersonId",
+                        column: x => x.PersonId,
                         principalTable: "Persons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -59,14 +59,14 @@ namespace Parking.DataAccess.SQL.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CarNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    IdPerson = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vehicles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Vehicles_Persons_IdPerson",
-                        column: x => x.IdPerson,
+                        name: "FK_Vehicles_Persons_PersonId",
+                        column: x => x.PersonId,
                         principalTable: "Persons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -77,16 +77,15 @@ namespace Parking.DataAccess.SQL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdVehicle = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdPerson = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdRates = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Places", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Places_Persons_IdPerson",
-                        column: x => x.IdPerson,
+                        name: "FK_Places_Persons_PersonId",
+                        column: x => x.PersonId,
                         principalTable: "Persons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -96,12 +95,6 @@ namespace Parking.DataAccess.SQL.Migrations
                         principalTable: "Rates",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Places_Vehicles_IdVehicle",
-                        column: x => x.IdVehicle,
-                        principalTable: "Vehicles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -111,28 +104,28 @@ namespace Parking.DataAccess.SQL.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateArrival = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateLeaving = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IdPlace = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PlaceId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Dates", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Dates_Places_IdPlace",
-                        column: x => x.IdPlace,
+                        name: "FK_Dates_Places_PlaceId",
+                        column: x => x.PlaceId,
                         principalTable: "Places",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Dates_IdPlace",
+                name: "IX_Dates_PlaceId",
                 table: "Dates",
-                column: "IdPlace");
+                column: "PlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payments_IdPerson",
+                name: "IX_Payments_PersonId",
                 table: "Payments",
-                column: "IdPerson");
+                column: "PersonId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Persons_Phone",
@@ -141,24 +134,25 @@ namespace Parking.DataAccess.SQL.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Places_IdPerson",
-                table: "Places",
-                column: "IdPerson");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Places_IdRates",
                 table: "Places",
                 column: "IdRates");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Places_IdVehicle",
+                name: "IX_Places_PersonId",
                 table: "Places",
-                column: "IdVehicle");
+                column: "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Vehicles_IdPerson",
+                name: "IX_Vehicles_CarNumber",
                 table: "Vehicles",
-                column: "IdPerson");
+                column: "CarNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vehicles_PersonId",
+                table: "Vehicles",
+                column: "PersonId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -170,16 +164,16 @@ namespace Parking.DataAccess.SQL.Migrations
                 name: "Payments");
 
             migrationBuilder.DropTable(
-                name: "Places");
-
-            migrationBuilder.DropTable(
-                name: "Rates");
-
-            migrationBuilder.DropTable(
                 name: "Vehicles");
 
             migrationBuilder.DropTable(
+                name: "Places");
+
+            migrationBuilder.DropTable(
                 name: "Persons");
+
+            migrationBuilder.DropTable(
+                name: "Rates");
         }
     }
 }

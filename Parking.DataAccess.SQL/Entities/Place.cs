@@ -7,11 +7,7 @@ namespace Parking.DataAccess.SQL.Entities
     {
         public Guid Id { get; set; }
 
-        public Guid IdVehicle { get; set; }
-
-        public Vehicle Vehicle { get; set; }
-
-        public Guid IdPerson { get; set; }
+        public Guid? PersonId { get; set; }
 
         public Person Person { get; set; }
 

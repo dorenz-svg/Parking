@@ -12,7 +12,7 @@ namespace Parking.DataAccess.SQL.Configurations
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id);
-            builder.Property(x => x.IdPerson).IsRequired();
+            builder.Property(x => x.PersonId).IsRequired();
             builder.Property(x => x.CarNumber).HasMaxLength(50).IsRequired();
 
             builder.HasIndex(x => x.CarNumber).IsUnique();
