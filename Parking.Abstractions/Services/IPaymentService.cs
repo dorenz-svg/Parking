@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Parking.Abstractions.Repositories
+namespace Parking.Abstractions.Services
 {
-    public interface IPaymentRepository
+    public interface IPaymentService
     {
+        public Task<IEnumerable<GetPaymentModel>> GetPayments(string phonePerson);
+
         public Task CreatePayment(CreatePaymentModel paymentModel);
 
         public Task DeletePayment(string paymentId);
-
-        public Task<IEnumerable<GetPaymentModel>> GetPayments(string phonePerson);
     }
 }

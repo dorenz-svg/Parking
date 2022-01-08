@@ -15,6 +15,18 @@ namespace Parking.DataAccess.SQL.Repositories
             _context = context;
         }
 
+        public async  Task AddDates(string placeId, DateTime dateArrival, DateTime? dateLeaving)
+        {
+            _context.Dates.Add(new Entities.Dates 
+            { 
+                PlaceId = new Guid(placeId), 
+                DateArrival = dateArrival, 
+                DateLeaving = dateLeaving 
+            });
+
+            await _context.SaveChangesAsync();
+        }
+
         public async Task CreatePlace(CreatePlaceModel createPlace)
         {
             _context.Places.Add(new Entities.Place

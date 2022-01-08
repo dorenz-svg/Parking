@@ -50,7 +50,19 @@ namespace Parking.DataAccess.SQL.Repositories
             return person?.Id.ToString();
         }
 
-        public async  Task<IEnumerable<string>> GetPlaces(string personId)
+        public async Task<GetPersonModel> GetPerson(string phone)
+        {
+            var person = await _context.People.FirstOrDefaultAsync(x => x.Phone == phone);
+            return new GetPersonModel 
+            { 
+                Id = person.Id.ToString(),
+                SurName = person.SurName,
+                Name = person.Name,
+                Phone = person.Phone 
+            };
+        }
+
+        public async Task<IEnumerable<string>> GetPlaces(string personId)
         {
             return await _context.Places.Where(x => x.PersonId == new Guid(personId)).Select(x => x.Id.ToString()).ToListAsync();
         }

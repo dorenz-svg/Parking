@@ -9,5 +9,7 @@ namespace Parking.Abstractions.Repositories
         public Task CreatePlace(CreatePlaceModel createPlace);
 
         public Task DeletePlace(string placeId);
+
+        public Task AddDates(string placeId, DateTime dateArrival, DateTime? dateLeaving);
     }
 }
