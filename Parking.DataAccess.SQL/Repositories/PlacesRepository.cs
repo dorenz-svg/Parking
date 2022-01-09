@@ -2,6 +2,8 @@
 using Parking.Abstractions.Models;
 using Parking.Abstractions.Repositories;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Parking.DataAccess.SQL.Repositories
@@ -44,6 +46,19 @@ namespace Parking.DataAccess.SQL.Repositories
             _context.Places.Remove(place);
 
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<GetPlacesModel>> GetPlaces()
+        {
+            return await _context.Places
+                .Select(x=>new GetPlacesModel 
+                {
+                    Id=x.Id.ToString(),
+                    IdRates=x.IdRates.ToString(),
+                    PersonId=x.PersonId.ToString()
+                })
+                .Take(20)
+                .ToListAsync();
         }
     }
 }

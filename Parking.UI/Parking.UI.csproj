@@ -6,4 +6,13 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Parking.Core\Parking.Core.csproj" />
+    <ProjectReference Include="..\Parking.DataAccess.SQL\Parking.DataAccess.SQL.csproj" />
+  </ItemGroup>
+
 </Project>

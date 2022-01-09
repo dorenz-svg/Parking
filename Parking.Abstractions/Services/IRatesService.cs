@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Parking.Abstractions.Repositories
+namespace Parking.Abstractions.Services
 {
-    public interface IRatesRepository
+    public interface IRatesService
     {
         public Task CreateRate(CreateRateModel rateModel);
 

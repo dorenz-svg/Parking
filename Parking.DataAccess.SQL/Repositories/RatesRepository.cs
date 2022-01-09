@@ -2,6 +2,8 @@
 using Parking.Abstractions.Models;
 using Parking.Abstractions.Repositories;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Parking.DataAccess.SQL.Repositories
@@ -17,13 +19,13 @@ namespace Parking.DataAccess.SQL.Repositories
 
         public async Task CreateRate(CreateRateModel rateModel)
         {
-            _context.Rates.Add(new Entities.Rates 
+            _context.Rates.Add(new Entities.Rates
             {
-                Discount=rateModel.Discount,
-                CostPerHour=rateModel.CostPerHour
+                Discount = rateModel.Discount,
+                CostPerHour = rateModel.CostPerHour
             });
 
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteRate(string rateId)
@@ -33,6 +35,19 @@ namespace Parking.DataAccess.SQL.Repositories
             _context.Rates.Remove(rate);
 
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<GetRatesModel>> GetRates()
+        {
+            return await _context.Rates
+                .Select(x => new GetRatesModel
+                {
+                    CostPerHour = x.CostPerHour,
+                    Discount = x.Discount,
+                    Id = x.Id.ToString()
+                })
+                .Take(20)
+                .ToListAsync();
         }
     }
 }

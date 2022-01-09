@@ -1,13 +1,15 @@
+using Autofac;
+using Parking.Core;
+using Parking.DataAccess.SQL;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Parking.UI
 {
     static class Program
     {
+        public static IContainer Container { get; private set; }
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -17,7 +19,15 @@ namespace Parking.UI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var builder = new ContainerBuilder();
+            builder.RegisterModule<CoreDependencyModule>();
+            builder.RegisterModule<DataAccessDependencyModule>();
+            builder.RegisterType<Form1>();
+            Container = builder.Build();
+            using (var form= Container.Resolve<Form1>())
+            {
+                Application.Run(form);
+            }
         }
     }
 }

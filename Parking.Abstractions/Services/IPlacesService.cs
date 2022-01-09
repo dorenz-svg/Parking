@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Parking.Abstractions.Repositories
+namespace Parking.Abstractions.Services
 {
-    public interface IPlacesRepository
+    public interface IPlacesService
     {
         public Task CreatePlace(CreatePlaceModel createPlace);
 
