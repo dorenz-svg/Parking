@@ -14,7 +14,7 @@ namespace Parking.Abstractions.Repositories
 
         public Task<GetPersonModel> GetPerson(string phone);
 
-        public Task AddVehicleToPerson(string carBrand, string personId);
+        
 
         public Task<IEnumerable<string>> GetPlaces(string personId);
     }

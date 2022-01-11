@@ -14,5 +14,9 @@ namespace Parking.Abstractions.Repositories
         public Task AddDates(string placeId, DateTime dateArrival, DateTime? dateLeaving);
 
         public Task<IEnumerable<GetPlacesModel>> GetPlaces();
+
+        public Task<GetPlacesModel> GetPlace(string id);
+
+        public Task<string> GetPersonId(string placeId);
     }
 }

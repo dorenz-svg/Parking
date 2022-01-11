@@ -14,11 +14,6 @@ namespace Parking.Core.Services
             _personRepository = personRepository;
         }
 
-        public async Task AddVehicleToPerson(string carBrand, string personId)
-        {
-            await _personRepository.AddVehicleToPerson(carBrand, personId);
-        }
-
         public async Task CreatePerson(CreatePersonModel personModel)
         {
             await _personRepository.CreatePerson(personModel);

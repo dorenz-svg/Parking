@@ -12,6 +12,7 @@ namespace Parking.Core
             builder.RegisterType<PaymentService>().As<IPaymentService>().InstancePerDependency();
             builder.RegisterType<PlacesService>().As<IPlacesService>().InstancePerDependency();
             builder.RegisterType<PersonService>().As<IPersonService>().InstancePerDependency();
+            builder.RegisterType<VehicleService>().As<IVehicleService>().InstancePerDependency();
         }
     }
 }

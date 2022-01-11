@@ -11,5 +11,7 @@ namespace Parking.Abstractions.Repositories
         public Task DeleteRate(string rateId);
 
         public Task<IEnumerable<GetRatesModel>> GetRates();
+
+        public Task<GetRatesModel> GetRate(string id);
     }
 }

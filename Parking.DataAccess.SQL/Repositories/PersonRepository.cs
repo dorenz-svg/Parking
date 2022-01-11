@@ -17,13 +17,6 @@ namespace Parking.DataAccess.SQL.Repositories
             _context = context;
         }
 
-        public async Task AddVehicleToPerson(string carNumber, string personId)
-        {
-            _context.Vehicles.Add(new Entities.Vehicle { CarNumber = carNumber, PersonId = new Guid(personId) });
-
-            await _context.SaveChangesAsync();
-        }
-
         public async Task CreatePerson(CreatePersonModel personModel)
         {
             _context.People.Add(new Entities.Person
@@ -53,6 +46,10 @@ namespace Parking.DataAccess.SQL.Repositories
         public async Task<GetPersonModel> GetPerson(string phone)
         {
             var person = await _context.People.FirstOrDefaultAsync(x => x.Phone == phone);
+
+            if (person is null)
+                return null;
+
             return new GetPersonModel 
             { 
                 Id = person.Id.ToString(),

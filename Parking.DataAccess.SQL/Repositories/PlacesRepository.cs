@@ -43,6 +43,10 @@ namespace Parking.DataAccess.SQL.Repositories
         public async Task DeletePlace(string placeId)
         {
             var place = await _context.Places.FirstOrDefaultAsync(x => x.Id == new Guid(placeId));
+
+            if (place is null)
+                return;
+
             _context.Places.Remove(place);
 
             await _context.SaveChangesAsync();
@@ -53,12 +57,33 @@ namespace Parking.DataAccess.SQL.Repositories
             return await _context.Places
                 .Select(x=>new GetPlacesModel 
                 {
-                    Id=x.Id.ToString(),
-                    IdRates=x.IdRates.ToString(),
-                    PersonId=x.PersonId.ToString()
+                    Id = x.Id.ToString(),
+                    Cost = x.Rates.CostPerHour.ToString(),
+                    PersonName = x.Person.Name.ToString()
                 })
                 .Take(20)
                 .ToListAsync();
+        }
+
+        public async Task<GetPlacesModel> GetPlace(string id)
+        {
+            return await _context.Places
+                .Include(x=>x.Person)
+                .Include(x=>x.Rates)
+                .Where(x=>x.Id== new Guid(id))
+                .Select(x => new GetPlacesModel
+                {
+                    Id = x.Id.ToString(),
+                    Cost = x.Rates.CostPerHour.ToString(),
+                    PersonName = x.Person.Name.ToString()
+                })
+                .FirstOrDefaultAsync(x=>x.Id==id);
+        }
+
+        public async Task<string> GetPersonId(string placeId)
+        {
+            var place= await _context.Places.FirstOrDefaultAsync(x => x.Id == new Guid(placeId));
+            return place.PersonId.ToString();
         }
     }
 }

@@ -23,6 +23,8 @@ namespace Parking.DataAccess.SQL
 
             builder.RegisterType<RatesRepository>().As<IRatesRepository>()
                 .InstancePerLifetimeScope();
+            builder.RegisterType<VehicleRepository>().As<IVehicleRepository>()
+                .InstancePerLifetimeScope();
         }
     }
 }

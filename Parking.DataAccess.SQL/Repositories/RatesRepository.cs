@@ -37,6 +37,19 @@ namespace Parking.DataAccess.SQL.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<GetRatesModel> GetRate(string id)
+        {
+            return await _context.Rates
+                .Where(x=>x.Id==new Guid(id))
+                .Select(x => new GetRatesModel
+                {
+                    CostPerHour = x.CostPerHour,
+                    Discount = x.Discount,
+                    Id = x.Id.ToString()
+                })
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<GetRatesModel>> GetRates()
         {
             return await _context.Rates

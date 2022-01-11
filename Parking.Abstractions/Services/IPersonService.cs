@@ -11,6 +11,6 @@ namespace Parking.Abstractions.Services
 
         public Task DeletePerson(string phone);
 
-        public Task AddVehicleToPerson(string carBrand, string personId);
+        
     }
 }

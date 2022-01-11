@@ -22,9 +22,9 @@ namespace Parking.UI
             var builder = new ContainerBuilder();
             builder.RegisterModule<CoreDependencyModule>();
             builder.RegisterModule<DataAccessDependencyModule>();
-            builder.RegisterType<Form1>();
+            builder.RegisterModule<UIDependencyModule>();
             Container = builder.Build();
-            using (var form= Container.Resolve<Form1>())
+            using (var form= Container.Resolve<Main>())
             {
                 Application.Run(form);
             }
