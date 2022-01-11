@@ -58,7 +58,7 @@ namespace Parking.Core.Services
 
         public async Task<GetPlacesModel> GetPlace(string id)
         {
-            if (id.Length != 32)
+            if (id is null || id.Length != 32)
                 return null;
 
             return await _repository.GetPlace(id);
