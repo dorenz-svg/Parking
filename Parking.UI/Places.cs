@@ -26,6 +26,12 @@ namespace Parking.UI
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             var result = await _placesService.GetPlace(textBox1.Text);
             if (result is null)
             {
@@ -41,6 +47,12 @@ namespace Parking.UI
 
         private async void button3_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             await _placesService.DeletePlace(textBox1.Text);
         }
 

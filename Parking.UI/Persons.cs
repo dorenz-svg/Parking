@@ -20,6 +20,12 @@ namespace Parking.UI
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox1.Text) )
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             var result = await _personService.GetPerson(textBox1.Text);
             if (result is null)
             {
@@ -40,6 +46,12 @@ namespace Parking.UI
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox3.Text) || string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox5.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             await _personService.CreatePerson(new Abstractions.Models.CreatePersonModel
             {
                 Name = textBox3.Text,
@@ -50,6 +62,12 @@ namespace Parking.UI
 
         private async void button3_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             await _personService.DeletePerson(textBox1.Text);
         }
     }

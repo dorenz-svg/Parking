@@ -20,6 +20,12 @@ namespace Parking.UI
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             dataGridView1.DataSource=await _paymentService.GetPayments(textBox1.Text);
         }
 
@@ -30,6 +36,12 @@ namespace Parking.UI
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             await _paymentService.DeletePayment(textBox1.Text);
         }
     }

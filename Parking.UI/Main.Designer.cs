@@ -84,6 +84,7 @@ namespace Parking.UI
             this.button5.TabIndex = 2;
             this.button5.Text = "Vehicles";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Main
             // 

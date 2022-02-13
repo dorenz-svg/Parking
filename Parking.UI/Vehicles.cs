@@ -15,6 +15,12 @@ namespace Parking.UI
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             var result = await _vehicleService.GetVehicle(textBox1.Text);
 
             if (result is null)
@@ -30,12 +36,24 @@ namespace Parking.UI
 
         private async void button3_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             await _vehicleService.DeleteVehicle(textBox1.Text);
         }
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            await _vehicleService.AddVehicleToPerson(textBox2.Text,textBox3.Text);
+            if (string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox3.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
+            await _vehicleService.AddVehicleToPerson(textBox2.Text, textBox3.Text);
         }
     }
 }

@@ -27,6 +27,12 @@ namespace Parking.UI
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             await _placesService.AddDates(textBox1.Text, dateTimePicker1.Value, dateTimePicker2.Value);
         }
     }

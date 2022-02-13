@@ -20,6 +20,12 @@ namespace Parking.UI
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox2.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             await _placesService.CreatePlace(new Abstractions.Models.CreatePlaceModel 
             {
                 IdRates=textBox1.Text,

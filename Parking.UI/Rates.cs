@@ -25,6 +25,12 @@ namespace Parking.UI
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             await _ratesService.CreateRate(new Abstractions.Models.CreateRateModel 
             {
                 CostPerHour=decimal.Parse(textBox1.Text),
@@ -34,6 +40,12 @@ namespace Parking.UI
 
         private async void button3_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox3.Text))
+            {
+                MessageBox.Show("неверно введены данные");
+                return;
+            }
+
             await _ratesService.DeleteRate(textBox3.Text);
         }
     }

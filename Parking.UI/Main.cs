@@ -39,5 +39,11 @@ namespace Parking.UI
             var form = Program.Container.Resolve<Rates>();
             form.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<Vehicles>();
+            form.Show();
+        }
     }
 }

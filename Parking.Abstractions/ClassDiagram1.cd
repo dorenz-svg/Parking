@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Parking.Abstractions.Models.CreatePaymentModel" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CreatePaymentModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parking.Abstractions.Models.CreatePersonModel" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAQAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\CreatePersonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parking.Abstractions.Models.CreatePlaceModel" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CreatePlaceModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parking.Abstractions.Models.CreateRateModel" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAIAA=</HashCode>
+      <FileName>Models\CreateRateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parking.Abstractions.Models.GetPaymentModel" Collapsed="true">
+    <Position X="4.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAABQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GetPaymentModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parking.Abstractions.Models.GetPersonModel" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAEAAQAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\GetPersonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parking.Abstractions.Models.GetPlacesModel" Collapsed="true">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GetPlacesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parking.Abstractions.Models.GetRatesModel" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAIAA=</HashCode>
+      <FileName>Models\GetRatesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parking.Abstractions.Models.GetVehicleModel" Collapsed="true">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Models\GetVehicleModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Parking.Abstractions.Repositories.IPaymentRepository" Collapsed="true">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAgAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IPaymentRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Parking.Abstractions.Repositories.IPersonRepository" Collapsed="true">
+    <Position X="8" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAABAAAAAAAAAAAIAAAAAAAAAiAAAA=</HashCode>
+      <FileName>Repositories\IPersonRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Parking.Abstractions.Repositories.IPlacesRepository" Collapsed="true">
+    <Position X="4.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABABAAAAAAAAABAEAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Repositories\IPlacesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Parking.Abstractions.Repositories.IRatesRepository" Collapsed="true">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAgAAAUAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IRatesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Parking.Abstractions.Repositories.IVehicleRepository" Collapsed="true">
+    <Position X="4.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAABAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IVehicleRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Parking.Abstractions.Services.IPaymentService" Collapsed="true">
+    <Position X="6.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAgAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IPaymentService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Parking.Abstractions.Services.IPersonService" Collapsed="true">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAiAAAA=</HashCode>
+      <FileName>Services\IPersonService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Parking.Abstractions.Services.IPlacesService" Collapsed="true">
+    <Position X="6.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAABAEAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Services\IPlacesService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Parking.Abstractions.Services.IRatesService" Collapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IRatesService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Parking.Abstractions.Services.IVehicleService" Collapsed="true">
+    <Position X="6.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAABAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Services\IVehicleService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
