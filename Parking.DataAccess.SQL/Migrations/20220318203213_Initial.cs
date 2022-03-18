@@ -11,7 +11,8 @@ namespace Parking.DataAccess.SQL.Migrations
                 name: "Persons",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     SurName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false)
@@ -25,7 +26,8 @@ namespace Parking.DataAccess.SQL.Migrations
                 name: "Rates",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CostPerHour = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Discount = table.Column<float>(type: "real", nullable: false)
                 },
@@ -38,9 +40,10 @@ namespace Parking.DataAccess.SQL.Migrations
                 name: "Payments",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PersonId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,9 +60,10 @@ namespace Parking.DataAccess.SQL.Migrations
                 name: "Vehicles",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CarNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PersonId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,9 +80,10 @@ namespace Parking.DataAccess.SQL.Migrations
                 name: "Places",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    IdRates = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PersonId = table.Column<long>(type: "bigint", nullable: true),
+                    IdRates = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -101,10 +106,11 @@ namespace Parking.DataAccess.SQL.Migrations
                 name: "Dates",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DateArrival = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateLeaving = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    PlaceId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PlaceId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {

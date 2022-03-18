@@ -8,7 +8,7 @@ namespace Parking.Abstractions.Repositories
     {
         public Task CreatePayment(CreatePaymentModel paymentModel);
 
-        public Task DeletePayment(string paymentId);
+        public Task DeletePayment(long paymentId);
 
         public Task<IEnumerable<GetPaymentModel>> GetPayments(string phonePerson);
     }

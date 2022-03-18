@@ -22,15 +22,15 @@ namespace Parking.DataAccess.SQL.Repositories
             _context.Payments.Add(new Entities.Payment
             {
                 Cost = paymentModel.Cost,
-                PersonId = new Guid(paymentModel.PersonId)
+                PersonId = paymentModel.PersonId
             });
 
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeletePayment(string paymentId)
+        public async Task DeletePayment(long paymentId)
         {
-            var payment = await _context.Payments.FirstOrDefaultAsync(x => x.Id == new Guid(paymentId));
+            var payment = await _context.Payments.FirstOrDefaultAsync(x => x.Id == paymentId);
             _context.Payments.Remove(payment);
 
             await _context.SaveChangesAsync();
@@ -45,7 +45,7 @@ namespace Parking.DataAccess.SQL.Repositories
                     Surname=x.Person.SurName,
                     Name=x.Person.Name,
                     Cost=x.Cost,
-                    Id=x.Id.ToString()
+                    Id=x.Id
                 }).ToListAsync();
 
             return payments;

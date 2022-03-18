@@ -52,16 +52,16 @@ namespace Parking.DataAccess.SQL.Repositories
 
             return new GetPersonModel 
             { 
-                Id = person.Id.ToString(),
+                Id = person.Id,
                 SurName = person.SurName,
                 Name = person.Name,
                 Phone = person.Phone 
             };
         }
 
-        public async Task<IEnumerable<string>> GetPlaces(string personId)
+        public async Task<IEnumerable<string>> GetPlaces(long personId)
         {
-            return await _context.Places.Where(x => x.PersonId == new Guid(personId)).Select(x => x.Id.ToString()).ToListAsync();
+            return await _context.Places.Where(x => x.PersonId == personId).Select(x => x.Id.ToString()).ToListAsync();
         }
     }
 }

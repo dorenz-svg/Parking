@@ -17,11 +17,11 @@ namespace Parking.DataAccess.SQL.Repositories
             _context = context;
         }
 
-        public async  Task AddDates(string placeId, DateTime dateArrival, DateTime? dateLeaving)
+        public async  Task AddDates(long placeId, DateTime dateArrival, DateTime? dateLeaving)
         {
             _context.Dates.Add(new Entities.Dates 
             { 
-                PlaceId = new Guid(placeId), 
+                PlaceId = placeId, 
                 DateArrival = dateArrival, 
                 DateLeaving = dateLeaving 
             });
@@ -33,16 +33,16 @@ namespace Parking.DataAccess.SQL.Repositories
         {
             _context.Places.Add(new Entities.Place
             {
-                PersonId = new Guid(createPlace.PersonId),
-                IdRates = new Guid(createPlace.IdRates)
+                PersonId = createPlace.PersonId,
+                IdRates = createPlace.IdRates
             });
 
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeletePlace(string placeId)
+        public async Task DeletePlace(long placeId)
         {
-            var place = await _context.Places.FirstOrDefaultAsync(x => x.Id == new Guid(placeId));
+            var place = await _context.Places.FirstOrDefaultAsync(x => x.Id == placeId);
 
             if (place is null)
                 return;
@@ -57,7 +57,7 @@ namespace Parking.DataAccess.SQL.Repositories
             return await _context.Places
                 .Select(x=>new GetPlacesModel 
                 {
-                    Id = x.Id.ToString(),
+                    Id = x.Id,
                     Cost = x.Rates.CostPerHour.ToString(),
                     PersonName = x.Person.Name.ToString()
                 })
@@ -65,25 +65,25 @@ namespace Parking.DataAccess.SQL.Repositories
                 .ToListAsync();
         }
 
-        public async Task<GetPlacesModel> GetPlace(string id)
+        public async Task<GetPlacesModel> GetPlace(long id)
         {
             return await _context.Places
                 .Include(x=>x.Person)
                 .Include(x=>x.Rates)
-                .Where(x=>x.Id== new Guid(id))
+                .Where(x=>x.Id== id)
                 .Select(x => new GetPlacesModel
                 {
-                    Id = x.Id.ToString(),
+                    Id = x.Id,
                     Cost = x.Rates.CostPerHour.ToString(),
                     PersonName = x.Person.Name.ToString()
                 })
                 .FirstOrDefaultAsync(x=>x.Id==id);
         }
 
-        public async Task<string> GetPersonId(string placeId)
+        public async Task<long?> GetPersonId(long placeId)
         {
-            var place= await _context.Places.FirstOrDefaultAsync(x => x.Id == new Guid(placeId));
-            return place.PersonId.ToString();
+            var place= await _context.Places.FirstOrDefaultAsync(x => x.Id == placeId);
+            return place.PersonId;
         }
     }
 }

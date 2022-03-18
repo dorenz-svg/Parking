@@ -42,7 +42,7 @@ namespace Parking.UI
                 return;
             }
 
-            await _paymentService.DeletePayment(textBox1.Text);
+            await _paymentService.DeletePayment(long.Parse(textBox1.Text));
         }
     }
 }

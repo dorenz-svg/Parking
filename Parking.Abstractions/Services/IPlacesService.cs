@@ -9,11 +9,12 @@ namespace Parking.Abstractions.Services
     {
         public Task CreatePlace(CreatePlaceModel createPlace);
 
-        public Task DeletePlace(string placeId);
+        public Task DeletePlace(long placeId);
 
-        public Task AddDates(string placeId, DateTime dateArrival, DateTime? dateLeaving);
+        public Task AddDates(long placeId, DateTime dateArrival, DateTime? dateLeaving);
 
         public Task<IEnumerable<GetPlacesModel>> GetPlaces();
-        public Task<GetPlacesModel> GetPlace(string id);
+
+        public Task<GetPlacesModel> GetPlace(long id);
     }
 }

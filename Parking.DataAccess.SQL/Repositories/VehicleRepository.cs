@@ -16,12 +16,12 @@ namespace Parking.DataAccess.SQL.Repositories
             _context = context;
         }
 
-        public async Task AddVehicleToPerson(string carBrand, string personId)
+        public async Task AddVehicleToPerson(string carBrand, long personId)
         {
             _context.Vehicles.Add(new Entities.Vehicle
             {
                 CarNumber = carBrand,
-                PersonId = new Guid(personId)
+                PersonId = personId
             });
 
             await _context.SaveChangesAsync();

@@ -21,9 +21,10 @@ namespace Parking.DataAccess.SQL.Migrations
 
             modelBuilder.Entity("Parking.DataAccess.SQL.Entities.Dates", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DateArrival")
                         .HasColumnType("datetime2");
@@ -31,8 +32,8 @@ namespace Parking.DataAccess.SQL.Migrations
                     b.Property<DateTime?>("DateLeaving")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("PlaceId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long>("PlaceId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -43,15 +44,16 @@ namespace Parking.DataAccess.SQL.Migrations
 
             modelBuilder.Entity("Parking.DataAccess.SQL.Entities.Payment", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("Cost")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("PersonId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long>("PersonId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -62,9 +64,10 @@ namespace Parking.DataAccess.SQL.Migrations
 
             modelBuilder.Entity("Parking.DataAccess.SQL.Entities.Person", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -91,15 +94,16 @@ namespace Parking.DataAccess.SQL.Migrations
 
             modelBuilder.Entity("Parking.DataAccess.SQL.Entities.Place", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid>("IdRates")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long>("IdRates")
+                        .HasColumnType("bigint");
 
-                    b.Property<Guid?>("PersonId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long?>("PersonId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -112,9 +116,10 @@ namespace Parking.DataAccess.SQL.Migrations
 
             modelBuilder.Entity("Parking.DataAccess.SQL.Entities.Rates", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("CostPerHour")
                         .HasColumnType("decimal(18,2)");
@@ -129,17 +134,18 @@ namespace Parking.DataAccess.SQL.Migrations
 
             modelBuilder.Entity("Parking.DataAccess.SQL.Entities.Vehicle", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CarNumber")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid>("PersonId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long>("PersonId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

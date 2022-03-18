@@ -50,7 +50,7 @@ namespace Parking.Core.Tests.PlacesService
         {
             //Arrange
             var mockPlace = _fixture.Create<GetPlacesModel>();
-            string id = null;
+            long id = 0;
             _placesRepository
                .Setup(x => x.GetPlace(id))
                .ReturnsAsync(() => mockPlace);

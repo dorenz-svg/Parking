@@ -28,8 +28,8 @@ namespace Parking.UI
 
             await _placesService.CreatePlace(new Abstractions.Models.CreatePlaceModel 
             {
-                IdRates=textBox1.Text,
-                PersonId= textBox2.Text
+                IdRates=long.Parse(textBox1.Text),
+                PersonId= long.Parse(textBox2.Text)
             }); 
         }
     }

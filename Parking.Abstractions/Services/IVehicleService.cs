@@ -5,7 +5,7 @@ namespace Parking.Abstractions.Services
 {
     public interface IVehicleService
     {
-        public Task AddVehicleToPerson(string carNumber, string personId);
+        public Task AddVehicleToPerson(string carNumber, long personId);
 
         public Task DeleteVehicle(string carNumber);
 

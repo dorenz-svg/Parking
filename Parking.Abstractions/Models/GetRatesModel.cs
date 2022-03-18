@@ -3,7 +3,7 @@ namespace Parking.Abstractions.Models
 {
     public class GetRatesModel
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         public decimal CostPerHour { get; set; }
 

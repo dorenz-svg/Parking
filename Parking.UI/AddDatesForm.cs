@@ -33,7 +33,7 @@ namespace Parking.UI
                 return;
             }
 
-            await _placesService.AddDates(textBox1.Text, dateTimePicker1.Value, dateTimePicker2.Value);
+            await _placesService.AddDates(long.Parse(textBox1.Text), dateTimePicker1.Value, dateTimePicker2.Value);
         }
     }
 }

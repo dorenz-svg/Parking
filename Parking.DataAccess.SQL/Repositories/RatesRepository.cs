@@ -28,24 +28,24 @@ namespace Parking.DataAccess.SQL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteRate(string rateId)
+        public async Task DeleteRate(long rateId)
         {
-            var rate = await _context.Rates.FirstOrDefaultAsync(x => x.Id == new Guid(rateId));
+            var rate = await _context.Rates.FirstOrDefaultAsync(x => x.Id == rateId);
 
             _context.Rates.Remove(rate);
 
             await _context.SaveChangesAsync();
         }
 
-        public async Task<GetRatesModel> GetRate(string id)
+        public async Task<GetRatesModel> GetRate(long id)
         {
             return await _context.Rates
-                .Where(x=>x.Id==new Guid(id))
+                .Where(x=>x.Id==id)
                 .Select(x => new GetRatesModel
                 {
                     CostPerHour = x.CostPerHour,
                     Discount = x.Discount,
-                    Id = x.Id.ToString()
+                    Id = x.Id
                 })
                 .FirstOrDefaultAsync();
         }
@@ -57,7 +57,7 @@ namespace Parking.DataAccess.SQL.Repositories
                 {
                     CostPerHour = x.CostPerHour,
                     Discount = x.Discount,
-                    Id = x.Id.ToString()
+                    Id = x.Id
                 })
                 .Take(20)
                 .ToListAsync();

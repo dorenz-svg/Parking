@@ -8,10 +8,10 @@ namespace Parking.Abstractions.Repositories
     {
         public Task CreateRate(CreateRateModel rateModel);
 
-        public Task DeleteRate(string rateId);
+        public Task DeleteRate(long rateId);
 
         public Task<IEnumerable<GetRatesModel>> GetRates();
 
-        public Task<GetRatesModel> GetRate(string id);
+        public Task<GetRatesModel> GetRate(long id);
     }
 }

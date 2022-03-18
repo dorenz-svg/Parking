@@ -37,7 +37,7 @@ namespace Parking.UI
             }
             else
             {
-                textBox2.Text = result.Id;
+                textBox2.Text = result.Id.ToString();
                 textBox3.Text = result.Name;
                 textBox4.Text = result.SurName;
                 textBox5.Text = result.Phone;

@@ -20,7 +20,7 @@ namespace Parking.Core.Services
             await _repository.CreateRate(rateModel);
         }
 
-        public async Task DeleteRate(string rateId)
+        public async Task DeleteRate(long rateId)
         {
             await _repository.DeleteRate(rateId);
         }

@@ -32,14 +32,14 @@ namespace Parking.UI
                 return;
             }
 
-            var result = await _placesService.GetPlace(textBox1.Text);
+            var result = await _placesService.GetPlace(long.Parse(textBox1.Text));
             if (result is null)
             {
                 MessageBox.Show("Place Not Found");
             }
             else
             {
-                textBox2.Text = result.Id;
+                textBox2.Text = result.Id.ToString();
                 textBox3.Text = result.PersonName;
                 textBox4.Text = result.Cost;
             }
@@ -53,7 +53,7 @@ namespace Parking.UI
                 return;
             }
 
-            await _placesService.DeletePlace(textBox1.Text);
+            await _placesService.DeletePlace(long.Parse(textBox1.Text));
         }
 
         private void button4_Click(object sender, EventArgs e)

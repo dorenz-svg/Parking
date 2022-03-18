@@ -20,7 +20,7 @@ namespace Parking.Core.Services
             _paymentService = paymentService;
         }
 
-        public async Task AddDates(string placeId, DateTime dateArrival, DateTime? dateLeaving)
+        public async Task AddDates(long placeId, DateTime dateArrival, DateTime? dateLeaving)
         {
             await _repository.AddDates(placeId, dateArrival, dateLeaving);
             var rate = await _ratesRepository.GetRate(placeId);
@@ -30,10 +30,12 @@ namespace Parking.Core.Services
                 int countHours = time.Value.Hours;
                 var cost = countHours * rate.CostPerHour - countHours * rate.CostPerHour * (decimal)rate.Discount;
                 var personId = await _repository.GetPersonId(placeId);
+                if (personId is null)
+                    return;
                 await _paymentService.CreatePayment(new CreatePaymentModel
                 {
                     Cost = cost,
-                    PersonId = personId
+                    PersonId = personId ?? 0
                 });
             }
         }
@@ -43,11 +45,8 @@ namespace Parking.Core.Services
             await _repository.CreatePlace(createPlace);
         }
 
-        public async Task DeletePlace(string placeId)
+        public async Task DeletePlace(long placeId)
         {
-            if (placeId.Length != 32)
-                return;
-
             await _repository.DeletePlace(placeId);
         }
 
@@ -56,11 +55,8 @@ namespace Parking.Core.Services
             return await _repository.GetPlaces();
         }
 
-        public async Task<GetPlacesModel> GetPlace(string id)
+        public async Task<GetPlacesModel> GetPlace(long id)
         {
-            if (id is null || id.Length != 32)
-                return null;
-
             return await _repository.GetPlace(id);
         }
     }

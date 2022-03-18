@@ -4,8 +4,8 @@ namespace Parking.Abstractions.Models
 {
     public class CreatePlaceModel
     {
-        public string PersonId { get; set; }
+        public long PersonId { get; set; }
 
-        public string IdRates { get; set; }
+        public long IdRates { get; set; }
     }
 }

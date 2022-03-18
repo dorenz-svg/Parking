@@ -2,7 +2,7 @@
 {
     public class GetPaymentModel
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         public decimal Cost { get; set; }
 

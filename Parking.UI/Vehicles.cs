@@ -53,7 +53,7 @@ namespace Parking.UI
                 return;
             }
 
-            await _vehicleService.AddVehicleToPerson(textBox2.Text, textBox3.Text);
+            await _vehicleService.AddVehicleToPerson(textBox2.Text, long.Parse(textBox3.Text));
         }
     }
 }

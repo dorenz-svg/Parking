@@ -10,6 +10,6 @@ namespace Parking.Abstractions.Services
 
         public Task CreatePayment(CreatePaymentModel paymentModel);
 
-        public Task DeletePayment(string paymentId);
+        public Task DeletePayment(long paymentId);
     }
 }

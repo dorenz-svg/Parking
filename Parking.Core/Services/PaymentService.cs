@@ -20,7 +20,7 @@ namespace Parking.Core.Services
             await _repository.CreatePayment(paymentModel);
         }
 
-        public async Task DeletePayment(string paymentId)
+        public async Task DeletePayment(long paymentId)
         {
             await _repository.DeletePayment(paymentId);
         }

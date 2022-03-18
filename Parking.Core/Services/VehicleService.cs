@@ -13,7 +13,7 @@ namespace Parking.Core.Services
         {
             _vehicleRepository = vehicleRepository;
         }
-        public async Task AddVehicleToPerson(string carBrand, string personId)
+        public async Task AddVehicleToPerson(string carBrand, long personId)
         {
             await _vehicleRepository.AddVehicleToPerson(carBrand, personId);
         }

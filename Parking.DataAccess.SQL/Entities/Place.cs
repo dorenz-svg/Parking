@@ -5,13 +5,13 @@ namespace Parking.DataAccess.SQL.Entities
 {
     public class Place
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
-        public Guid? PersonId { get; set; }
+        public long? PersonId { get; set; }
 
         public Person Person { get; set; }
 
-        public Guid IdRates { get; set; }
+        public long IdRates { get; set; }
 
         public Rates Rates { get; set; }
 

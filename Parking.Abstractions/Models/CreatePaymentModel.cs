@@ -4,6 +4,6 @@
     {
         public decimal Cost { get; set; }
 
-        public string PersonId { get; set; }
+        public long PersonId { get; set; }
     }
 }

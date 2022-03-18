@@ -5,7 +5,7 @@ namespace Parking.DataAccess.SQL.Entities
 {
     public class Rates
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         public decimal CostPerHour { get; set; }
 

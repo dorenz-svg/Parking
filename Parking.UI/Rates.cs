@@ -46,7 +46,7 @@ namespace Parking.UI
                 return;
             }
 
-            await _ratesService.DeleteRate(textBox3.Text);
+            await _ratesService.DeleteRate(long.Parse(textBox3.Text));
         }
     }
 }
