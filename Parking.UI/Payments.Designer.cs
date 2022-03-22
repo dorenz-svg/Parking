@@ -70,9 +70,9 @@ namespace Parking.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(69, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 15);
+            this.label1.Size = new System.Drawing.Size(40, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "User Phone";
+            this.label1.Text = "UserId";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox2

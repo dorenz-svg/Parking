@@ -28,9 +28,9 @@ namespace Parking.Core.Services
             {
                 TimeSpan? time = dateLeaving - dateArrival;
                 int countHours = time.Value.Hours;
-                var cost = countHours * rate.CostPerHour - countHours * rate.CostPerHour * (decimal)rate.Discount;
+                var cost = (countHours * rate.CostPerHour) - (countHours * rate.CostPerHour * (decimal)(rate.Discount / 100));
                 var personId = await _repository.GetPersonId(placeId);
-                if (personId is null)
+                if (personId == default)
                     return;
                 await _paymentService.CreatePayment(new CreatePaymentModel
                 {

@@ -25,9 +25,9 @@ namespace Parking.Core.Services
             await _repository.DeletePayment(paymentId);
         }
 
-        public async Task<IEnumerable<GetPaymentModel>> GetPayments(string phonePerson)
+        public async Task<IEnumerable<GetPaymentModel>> GetPayments(long userId)
         {
-           return await _repository.GetPayments(phonePerson);
+           return await _repository.GetPayments(userId);
         }
     }
 }

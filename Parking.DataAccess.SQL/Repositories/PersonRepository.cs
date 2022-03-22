@@ -29,23 +29,23 @@ namespace Parking.DataAccess.SQL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeletePerson(string phone)
+        public async Task DeletePerson(long personId)
         {
-            var person = await _context.People.FirstOrDefaultAsync(x => x.Phone == phone);
+            var person = await _context.People.FirstOrDefaultAsync(x => x.Id == personId);
             _context.People.Remove(person);
 
             await _context.SaveChangesAsync();
         }
 
-        public async Task<string> GerPersonId(string phone)
+        public async Task<string> GerPersonId(long personId)
         {
-            var person = await _context.People.FirstOrDefaultAsync(x => x.Phone == phone);
+            var person = await _context.People.FirstOrDefaultAsync(x => x.Id == personId);
             return person?.Id.ToString();
         }
 
-        public async Task<GetPersonModel> GetPerson(string phone)
+        public async Task<GetPersonModel> GetPerson(long personId)
         {
-            var person = await _context.People.FirstOrDefaultAsync(x => x.Phone == phone);
+            var person = await _context.People.FirstOrDefaultAsync(x => x.Id == personId);
 
             if (person is null)
                 return null;
@@ -57,6 +57,20 @@ namespace Parking.DataAccess.SQL.Repositories
                 Name = person.Name,
                 Phone = person.Phone 
             };
+        }
+
+        public async Task<IEnumerable<GetPersonModel>> GetPersons()
+        {
+            return await _context.People
+                .Select(x => new GetPersonModel
+                {
+                    Id = x.Id,
+                    SurName = x.SurName,
+                    Name = x.Name,
+                    Phone = x.Phone
+                })
+                .Take(20)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<string>> GetPlaces(long personId)

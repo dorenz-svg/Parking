@@ -6,7 +6,7 @@ namespace Parking.Abstractions.Services
 {
     public interface IPaymentService
     {
-        public Task<IEnumerable<GetPaymentModel>> GetPayments(string phonePerson);
+        public Task<IEnumerable<GetPaymentModel>> GetPayments(long userId);
 
         public Task CreatePayment(CreatePaymentModel paymentModel);
 

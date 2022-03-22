@@ -1,4 +1,5 @@
 ﻿using Parking.Abstractions.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Parking.Abstractions.Services
@@ -7,10 +8,10 @@ namespace Parking.Abstractions.Services
     {
         public Task CreatePerson(CreatePersonModel personModel);
 
-        public Task<GetPersonModel> GetPerson(string phone);
+        public Task<GetPersonModel> GetPerson(long personId);
 
-        public Task DeletePerson(string phone);
+        public Task DeletePerson(long personId);
 
-        
+        public Task<IEnumerable<GetPersonModel>> GetPersons();
     }
 }

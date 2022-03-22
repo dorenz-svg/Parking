@@ -8,11 +8,13 @@ namespace Parking.Abstractions.Repositories
     {
         public Task CreatePerson(CreatePersonModel personModel);
 
-        public Task DeletePerson(string phone);
+        public Task DeletePerson(long personId);
 
-        public Task<string> GerPersonId(string phone);
+        public Task<string> GerPersonId(long personId);
 
-        public Task<GetPersonModel> GetPerson(string phone);
+        public Task<GetPersonModel> GetPerson(long personId);
+
+        public Task<IEnumerable<GetPersonModel>> GetPersons();
 
         public Task<IEnumerable<string>> GetPlaces(long personId);
     }

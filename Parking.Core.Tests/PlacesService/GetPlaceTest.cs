@@ -49,7 +49,7 @@ namespace Parking.Core.Tests.PlacesService
         public async Task Get_NotValidInput_ReturnsNull()
         {
             //Arrange
-            var mockPlace = _fixture.Create<GetPlacesModel>();
+            GetPlacesModel mockPlace = null;
             long id = 0;
             _placesRepository
                .Setup(x => x.GetPlace(id))
@@ -59,7 +59,7 @@ namespace Parking.Core.Tests.PlacesService
             var result = await _service.GetPlace(id);
 
             //Assert
-            _placesRepository.Verify(x => x.GetPlace(id), Times.Never);
+            _placesRepository.Verify(x => x.GetPlace(id), Times.Once);
             result.Should().BeNull();
         }
     }

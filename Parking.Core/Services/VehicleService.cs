@@ -1,6 +1,7 @@
 ﻿using Parking.Abstractions.Models;
 using Parking.Abstractions.Repositories;
 using Parking.Abstractions.Services;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Parking.Core.Services
@@ -26,6 +27,11 @@ namespace Parking.Core.Services
         public async Task<GetVehicleModel> GetVehicle(string carbrand)
         {
            return await _vehicleRepository.GetVehicle(carbrand);
+        }
+
+        public async Task<IEnumerable<GetVehicleModel>> GetVehicles()
+        {
+           return await _vehicleRepository.GetVehicles();
         }
     }
 }

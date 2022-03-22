@@ -36,10 +36,10 @@ namespace Parking.DataAccess.SQL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<GetPaymentModel>> GetPayments(string phonePerson)
+        public async Task<IEnumerable<GetPaymentModel>> GetPayments(long userId)
         {
            var payments=await _context.Payments.Include(x => x.Person)
-                .Where(x => x.Person.Phone == phonePerson)
+                .Where(x => x.Person.Id == userId)
                 .Select(x => new GetPaymentModel
                 {
                     Surname=x.Person.SurName,

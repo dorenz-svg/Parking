@@ -1,5 +1,6 @@
 ﻿using Parking.Abstractions.Services;
 using System;
+using System.Collections;
 using System.Windows.Forms;
 
 namespace Parking.UI
@@ -29,8 +30,9 @@ namespace Parking.UI
             }
             else
             {
-                textBox2.Text = result.CarNumber;
-                textBox3.Text = result.NameUser;
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.Add(result);
+                dataGridView1.DataSource = bindingSource;
             }
         }
 
@@ -54,6 +56,11 @@ namespace Parking.UI
             }
 
             await _vehicleService.AddVehicleToPerson(textBox2.Text, long.Parse(textBox3.Text));
+        }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = await _vehicleService.GetVehicles();
         }
     }
 }

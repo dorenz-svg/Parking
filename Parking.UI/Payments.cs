@@ -26,7 +26,7 @@ namespace Parking.UI
                 return;
             }
 
-            dataGridView1.DataSource=await _paymentService.GetPayments(textBox1.Text);
+            dataGridView1.DataSource = await _paymentService.GetPayments(long.Parse(textBox1.Text));
         }
 
         private void label1_Click(object sender, EventArgs e)

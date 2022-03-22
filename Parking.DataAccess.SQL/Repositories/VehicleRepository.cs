@@ -2,6 +2,7 @@
 using Parking.Abstractions.Models;
 using Parking.Abstractions.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -37,10 +38,23 @@ namespace Parking.DataAccess.SQL.Repositories
 
         public async Task<GetVehicleModel> GetVehicle(string carNumber)
         {
-            return await _context.Vehicles.Include(x => x.Person).AsNoTracking()
+            return await _context.Vehicles.AsNoTracking()
                 .Where(x => x.CarNumber == carNumber)
-                .Select(x => new GetVehicleModel { CarNumber = x.CarNumber, NameUser = x.Person.Name })
+                .Select(x => new GetVehicleModel { CarNumber = x.CarNumber, PersonId = x.PersonId })
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<GetVehicleModel>> GetVehicles()
+        {
+            return await _context.Vehicles
+               .Select(x => new GetVehicleModel
+               {
+                   Id = x.Id,
+                   CarNumber = x.CarNumber,
+                   PersonId= x.PersonId
+               })
+               .Take(20)
+               .ToListAsync();
         }
     }
 }

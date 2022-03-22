@@ -26,21 +26,16 @@ namespace Parking.UI
                 return;
             }
 
-            var result = await _personService.GetPerson(textBox1.Text);
+            var result = await _personService.GetPerson(long.Parse(textBox1.Text));
             if (result is null)
             {
-                textBox2.Text = "";
-                textBox3.Text = "";
-                textBox4.Text = "";
-                textBox5.Text = "";
                 MessageBox.Show("User Not Found");
             }
             else
             {
-                textBox2.Text = result.Id.ToString();
-                textBox3.Text = result.Name;
-                textBox4.Text = result.SurName;
-                textBox5.Text = result.Phone;
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.Add(result);
+                dataGridView1.DataSource = bindingSource;
             }
         }
 
@@ -68,7 +63,17 @@ namespace Parking.UI
                 return;
             }
 
-            await _personService.DeletePerson(textBox1.Text);
+            await _personService.DeletePerson(long.Parse(textBox1.Text));
+        }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = await _personService.GetPersons();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
