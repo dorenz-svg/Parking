@@ -39,8 +39,10 @@ namespace Parking.DataAccess.SQL.Repositories
 
         public async Task<GetRatesModel> GetRate(long id)
         {
+            var place = await _context.Places.FirstOrDefaultAsync(x => x.Id == id);
+
             return await _context.Rates
-                .Where(x=>x.Id==id)
+                .Where(x=>x.Id==place.IdRates)
                 .Select(x => new GetRatesModel
                 {
                     CostPerHour = x.CostPerHour,
