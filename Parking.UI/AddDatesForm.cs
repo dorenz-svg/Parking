@@ -18,6 +18,8 @@ namespace Parking.UI
         {
             _placesService = placesService;
             InitializeComponent();
+            dateTimePicker1.Format = DateTimePickerFormat.Time;
+            dateTimePicker2.Format = DateTimePickerFormat.Time;
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
@@ -34,6 +36,16 @@ namespace Parking.UI
             }
 
             await _placesService.AddDates(long.Parse(textBox1.Text), dateTimePicker1.Value, dateTimePicker2.Value);
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
