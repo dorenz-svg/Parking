@@ -23,6 +23,7 @@ namespace Parking.Core.Services
         public async Task DeletePayment(long paymentId)
         {
             await _repository.DeletePayment(paymentId);
+            var temp = 0;
         }
 
         public async Task<IEnumerable<GetPaymentModel>> GetPayments(long userId)
